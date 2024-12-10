@@ -4,6 +4,9 @@
     "module": "ESNext",
     "moduleResolution": "node",
     "strict": true,
+    "paths": {
+      "react": [ "./node_modules/@types/react" ]
+    },
     "esModuleInterop": true,
     "skipLibCheck": true,
     "jsx": "react"
