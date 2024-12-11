@@ -4,19 +4,14 @@ const logoUrl = 'https://verbit.ai/wp-content/uploads/2024/03/Verbit-logo-redesi
 import '../styles/header.scss';
 import { FaUser, FaShoppingCart } from 'react-icons/fa';
 import Select from 'react-select';
-import {Book} from '../store/booksSlice';
+import {Book} from '../store/bookSlice';
 import {bookSearchFilter} from '../helpers/filters';
-
-type BookType = {
-    value: number;
-    label: string;
-    author: string;
-};
 
 
 const Header = () => {
     const [libraryBooks, setLibraryBooks] = useState<BookType[]>([]);
     const [load, setLoad] = useState(false);
+
 
     useEffect(() => {
         setLoad(true);
@@ -94,7 +89,7 @@ const Header = () => {
                 },
             ];
 
-            const options:BookType[] = mockData.map(item => ({ value: item.id, label: item.title, author: item.author }));
+            const options:BookType[] = mockData.map(item => ({ value: item.id, label: item.title, author: item.author, price: item.price, stock: item.stock }));
             setLibraryBooks(options);
             setLoad(false);
         }, 2000);

@@ -41,7 +41,12 @@ const UserProfile = () => {
                         <input name="lastName" value={editedUser.lastName || ''} onChange={handleFieldChange}/>
                         <DatePicker
                             selected={editedUser.dateOfBirth ? new Date(editedUser.dateOfBirth) : null}
-                            onChange={(date) => setEditedUser({...editedUser, dateOfBirth: date})}
+                            onChange={(date: Date | null) =>
+                                setEditedUser({
+                                    ...editedUser,
+                                    dateOfBirth: date ? date.getTime() : null,
+                                })
+                            }
                             dateFormat="MM/dd/yyyy"
                         />
                         <input name="email" value={editedUser.email || ''} onChange={handleFieldChange}/>
@@ -51,7 +56,7 @@ const UserProfile = () => {
                     <div>
                         <h2>{user.firstName} {user.lastName}</h2>
                         <p>{t('email')} {user.email}</p>
-                        <p>{t('dateOfBirth')} {user.dateOfBirth}</p>
+                        <p>{t('dateOfBirth')} {new Date(user.dateOfBirth).toLocaleDateString()}</p>
                         <button onClick={onEditProfileClick}>{t('editProfile')}</button>
                     </div>
             }
