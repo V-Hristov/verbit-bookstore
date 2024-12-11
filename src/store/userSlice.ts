@@ -6,7 +6,7 @@ export interface User {
     firstName: string | null;
     lastName: string | null;
     email: string | null;
-    dateOfBirth: Date | null;
+    dateOfBirth: number | undefined;
 }
 
 const initialState: User = {
@@ -14,32 +14,22 @@ const initialState: User = {
     firstName: "Valentin",
     lastName: "Hristov",
     email: "ValentinHristov@hotmail.com",
-    dateOfBirth: new Date("1991-05-08"),
+    dateOfBirth: new Date("1991-05-08").getTime(),
 }
 
 const userSlice = createSlice({
     name: 'user',
     initialState,
     reducers: {
-        setFirstName: (state, action: PayloadAction<string>) => {
-            state.firstName = action.payload;
-        },
-        setLastName: (state, action: PayloadAction<string>) => {
-            state.lastName = action.payload;
-        },
-        setEmail: (state, action: PayloadAction<string>) => {
-            if (isValidEmail(action.payload)) {
-                state.email = action.payload;
-            } else {
-                throw new Error('Invalid Emial!');
-            }
-        },
-        setDateOfBirth: (state, action: PayloadAction<Date>) => {
-            state.dateOfBirth = action.payload;
-        },
+        updateUserProfile: (state, action: PayloadAction<User>) => {
+            state.firstName = action.payload.firstName;
+            state.lastName = action.payload.lastName;
+            state.email = action.payload.email;
+            state.dateOfBirth = action.payload.dateOfBirth;
+        }
     }
 })
 
-
+export const {updateUserProfile} = userSlice.actions;
 
 export default userSlice.reducer;
