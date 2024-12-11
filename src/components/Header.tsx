@@ -2,7 +2,7 @@ import React, {useEffect, useState} from 'react';
 import {Link} from 'react-router-dom';
 const logoUrl = 'https://verbit.ai/wp-content/uploads/2024/03/Verbit-logo-redesign.svg';
 import '../styles/header.scss';
-import { FaUser, FaShoppingCart } from 'react-icons/fa';
+import { FaUser, FaShoppingCart, FaBook } from 'react-icons/fa';
 import Select from 'react-select';
 import {Book} from '../store/bookSlice';
 import {BookType} from '../pages/Book';
@@ -10,13 +10,16 @@ import {bookSearchFilter} from '../helpers/filters';
 import {useDispatch} from 'react-redux';
 import { setBook } from '../store/bookSlice';
 import { useNavigate } from 'react-router-dom';
+import {useTranslation} from "react-i18next";
 
 
 const Header = () => {
     const [libraryBooks, setLibraryBooks] = useState<BookType[]>([]);
     const [load, setLoad] = useState(false);
+    const [selectedValue, setSelectedValue] = useState('');
     const navigate = useNavigate();
     const dispatch = useDispatch();
+    const { t } = useTranslation();
 
 
     useEffect(() => {
@@ -101,6 +104,10 @@ const Header = () => {
         }, 2000);
     }, []);
 
+    useEffect(() =>{
+        setSelectedValue('')
+    }, [navigate])
+
     const handleChange = (selectedOption: BookType) => {
         const selectedBook: Book = {
             id: selectedOption?.value,
@@ -114,23 +121,25 @@ const Header = () => {
     }
     return (
         <nav className="header">
-            <div className="header-container">
+            <div className="headerContainer">
                 <header>
                     <Link to="/"> <img src={logoUrl} alt="Verbit Logo"/></Link>
                 </header>
-                <div className="search-bar">
-                    {load ? <p>Loading...</p> :
+                <div className="searchBar">
+                    {load ? <p>{t('loadingLabel')}</p> :
                         <Select
                             options={libraryBooks}
                             isSearchable={true}
                             onChange={handleChange}
                             isClearable={true}
                             backspaceRemovesValue={true}
+                            value={selectedValue}
                             filterOption={bookSearchFilter}
                         />
                     }
                 </div>
-                <div className="header-links">
+                <div className="headerLinks">
+                    <Link to="/library"><FaBook/></Link>
                     <Link to="/profile"><FaUser/></Link>
                     <Link to="/cart"><FaShoppingCart/></Link>
                 </div>

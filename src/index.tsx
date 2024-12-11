@@ -1,16 +1,18 @@
-import React from 'react';
+import React, { Suspense } from 'react';
 import ReactDOM from 'react-dom';
 import {Provider} from "react-redux";
 import {BrowserRouter as Router} from 'react-router-dom';
-import App from './App'
+const App = React.lazy(() => import('./App'));
 import {store} from './store/store';
 import './utils/i18n';
 
 ReactDOM.render(
-    <Provider store={store}>
-        <Router>
-            <App/>
-        </Router>
-    </Provider>,
+    <Suspense fallback={<div>Loading...</div>}>
+        <Provider store={store}>
+            <Router>
+                <App/>
+            </Router>
+        </Provider>
+    </Suspense>,
     document.getElementById('root')
 );

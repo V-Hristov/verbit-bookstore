@@ -1,8 +1,10 @@
-import React from 'react';
+import React, {useState} from 'react';
 import { useTranslation } from 'react-i18next';
-import { useSelector } from 'react-redux';
+import {useDispatch, useSelector} from 'react-redux';
 import { Book } from '../store/bookSlice';
-
+import { addBookToCart } from '../store/cartSlice';
+import {Button, Card, CardContent, Grid, Typography} from '@material-ui/core';
+import '../styles/book.scss';
 
 export type BookType = {
     value: number | null;
@@ -15,18 +17,27 @@ export type BookType = {
 const BookComponent: React.FC = () => {
     const { t } = useTranslation();
     const selectedBook: Book = useSelector((state: any) => state.book.item);
+    const [stock, setStock] = useState(selectedBook.stock);
+    const dispatch = useDispatch();
+
     const addToCart = () => {
-        console.log(`Book added`);
+        setStock(stock - 1);
+        dispatch(addBookToCart({...selectedBook, stock: 1}));
     };
+
     return (
-        <div>
-            <h2>{selectedBook.title}</h2>
-            <p>{`${t('authorName')}: ${selectedBook.author}`}</p>
-            <p>{`Price: ${selectedBook.price}`}</p>
-            <p>{`Stock: ${selectedBook.stock}`}</p>
-            <button onClick={addToCart}>Add to Cart</button>
-        </div>
-    );
-};
+        <Card className="book">
+            <CardContent>
+                <Grid container direction="column" alignItems="flex-start">
+                    <Typography variant="h6">{selectedBook.title}</Typography>
+                    <Typography>{`${t('authorName')}: ${selectedBook.author}`}</Typography>
+                    <Typography>{`${t('price')}: ${selectedBook.price}`}</Typography>
+                    <Typography>{`${t('stock')}: ${stock}`}</Typography>
+                    <Button variant="contained" color="primary" onClick={addToCart} disabled={stock === 0}>{t('addToCartButton')}</Button>
+                </Grid>
+            </CardContent>
+        </Card>
+    )
+}
 
 export default BookComponent;

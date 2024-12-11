@@ -2,17 +2,17 @@
   position: relative;
   border-bottom: 1px solid navy;
 
-  .header-container {
+  .headerContainer {
     display: flex;
     justify-content: space-between;
     align-items: center;
 
-    .search-bar {
+    .searchBar {
       width: 60%;
     }
   }
 
-  .header-links {
+  .headerLinks {
     display: flex;
     gap: 20px;
     a {
