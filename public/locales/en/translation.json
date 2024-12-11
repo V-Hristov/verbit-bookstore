@@ -2,5 +2,7 @@
   "userProfile": "User Profile",
   "email": "Email:",
   "dateOfBirth": "Date of Birth:",
-  "editProfile": "Edit Profile"
+  "editProfile": "Edit Profile",
+  "saveProfile": "Save Profile",
+  "verbitFooter": "Verbit Bookstore"
 }

@@ -1,0 +1,23 @@
+.header {
+  position: relative;
+  border-bottom: 1px solid navy;
+
+  .header-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    .search-bar {
+      width: 60%;
+    }
+  }
+
+  .header-links {
+    display: flex;
+    gap: 20px;
+    a {
+      font-size: 20px;
+      color: navy;
+    }
+  }
+}
