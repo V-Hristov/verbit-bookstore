@@ -29,7 +29,7 @@ const UserProfile = () => {
         dispatch(updateUserProfile(editedUser));
         setIsEditing(false);
     };
-    const dateOfBirth = editedUser.dateOfBirth ? new Date(editedUser.dateOfBirth).toLocaleDateString() : 'N/A';
+
     return (
         <div>
             <h1>{t('userProfile')}</h1>
@@ -41,17 +41,17 @@ const UserProfile = () => {
                         <input name="lastName" value={editedUser.lastName || ''} onChange={handleFieldChange}/>
                         <DatePicker
                             selected={editedUser.dateOfBirth ? new Date(editedUser.dateOfBirth) : null}
-                            onChange={(date) => setEditedUser({...editedUser, dateOfBirth: date?.getTime()})}
+                            onChange={(date) => setEditedUser({...editedUser, dateOfBirth: date})}
                             dateFormat="MM/dd/yyyy"
                         />
                         <input name="email" value={editedUser.email || ''} onChange={handleFieldChange}/>
-                        <button onClick={handleSaveProfileClick}>{t('saveProfile')}</button>
+                        <button onClick={handleSaveProfileClick}>Save Profile</button>
                     </>
                     :
                     <div>
                         <h2>{user.firstName} {user.lastName}</h2>
                         <p>{t('email')} {user.email}</p>
-                        <p>{t('dateOfBirth')} {dateOfBirth}</p>
+                        <p>{t('dateOfBirth')} {user.dateOfBirth}</p>
                         <button onClick={onEditProfileClick}>{t('editProfile')}</button>
                     </div>
             }
