@@ -7,6 +7,7 @@ import UserProfile from './pages/UserProfile';
 import Header from './components/Header';
 import Footer from './components/Footer';
 import './styles/app.scss';
+import BookComponent from './pages/Book';
 
 const App = () => {
     return (
@@ -17,6 +18,7 @@ const App = () => {
                         <Routes>
                             <Route path="/" element={<Home />} />
                             <Route path="/library" element={<BookList />} />
+                            <Route path="/book" element={<BookComponent />} />
                             <Route path="/cart" element={<Cart />} />
                             <Route path="/profile" element={<UserProfile />} />
                         </Routes>

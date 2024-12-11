@@ -5,7 +5,7 @@ export interface User {
     firstName: string | null;
     lastName: string | null;
     email: string | null;
-    dateOfBirth: number | undefined;
+    dateOfBirth: number | null;
 }
 
 const initialState: User = {

@@ -18,7 +18,7 @@ const UserProfile = () => {
         setIsEditing(true);
     };
 
-    const handleFieldChange = (e) => {
+    const handleFieldChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         setEditedUser({
             ...editedUser,
             [e.target.name]: e.target.value,
@@ -32,7 +32,6 @@ const UserProfile = () => {
 
     return (
         <div>
-            <h1>{t('userProfile')}</h1>
             <ReactAvatar name={`${user.firstName || 'User'} ${user.lastName || ''}`} size="100" round={true} />
             {
                 isEditing ?
@@ -56,7 +55,7 @@ const UserProfile = () => {
                     <div>
                         <h2>{user.firstName} {user.lastName}</h2>
                         <p>{t('email')} {user.email}</p>
-                        <p>{t('dateOfBirth')} {new Date(user.dateOfBirth).toLocaleDateString()}</p>
+                        <p>{t('dateOfBirth')} {user.dateOfBirth ? new Date(user.dateOfBirth).toLocaleDateString() : null}</p>
                         <button onClick={onEditProfileClick}>{t('editProfile')}</button>
                     </div>
             }

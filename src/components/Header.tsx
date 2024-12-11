@@ -5,12 +5,18 @@ import '../styles/header.scss';
 import { FaUser, FaShoppingCart } from 'react-icons/fa';
 import Select from 'react-select';
 import {Book} from '../store/bookSlice';
+import {BookType} from '../pages/Book';
 import {bookSearchFilter} from '../helpers/filters';
+import {useDispatch} from 'react-redux';
+import { setBook } from '../store/bookSlice';
+import { useNavigate } from 'react-router-dom';
 
 
 const Header = () => {
     const [libraryBooks, setLibraryBooks] = useState<BookType[]>([]);
     const [load, setLoad] = useState(false);
+    const navigate = useNavigate();
+    const dispatch = useDispatch();
 
 
     useEffect(() => {
@@ -96,7 +102,15 @@ const Header = () => {
     }, []);
 
     const handleChange = (selectedOption: BookType) => {
-        console.log(`Option selected:`, selectedOption);
+        const selectedBook: Book = {
+            id: selectedOption?.value,
+            title: selectedOption?.label,
+            author: selectedOption?.author,
+            price: selectedOption?.price,
+            stock: selectedOption?.stock
+        };
+        dispatch(setBook(selectedBook));
+        navigate(selectedOption ? '/book' : '/');
     }
     return (
         <nav className="header">
