@@ -1,10 +1,10 @@
 .app {
-  display: flex;
-  flex-direction: column;
-  min-height: 100vh;
+	display: flex;
+	flex-direction: column;
+	min-height: 100vh;
 
-  .footer {
-    margin-top: auto;
-    border-top: 1px solid navy;
-  }
+	.footer {
+		margin-top: auto;
+		border-top: 1px solid navy;
+	}
 }

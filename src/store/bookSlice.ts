@@ -1,29 +1,29 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 
 export interface Book {
-    id: number | null;
-    title: string;
-    author: string;
-    price: number;
-    stock: number;
+	id: number | null;
+	title: string;
+	author: string;
+	price: number;
+	stock: number;
 }
 
 interface BookState {
-    item: Book | null;
+	item: Book | null;
 }
 
 const initialState: BookState = {
-    item: null,
-}
+	item: null,
+};
 
 const bookSlice = createSlice({
-    name: 'book',
-    initialState,
-    reducers: {
-        setBook: (state, action: PayloadAction<Book>) => {
-            state.item = action.payload;
-        },
-    },
+	name: 'book',
+	initialState,
+	reducers: {
+		setBook: (state, action: PayloadAction<Book>) => {
+			state.item = action.payload;
+		},
+	},
 });
 
 export const { setBook } = bookSlice.actions;

@@ -1,23 +1,23 @@
 .header {
-  position: relative;
-  border-bottom: 1px solid navy;
+	position: relative;
+	border-bottom: 1px solid navy;
 
-  .headerContainer {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+	.headerContainer {
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
 
-    .searchBar {
-      width: 60%;
-    }
-  }
+		.searchBar {
+			width: 60%;
+		}
+	}
 
-  .headerLinks {
-    display: flex;
-    gap: 20px;
-    a {
-      font-size: 20px;
-      color: navy;
-    }
-  }
+	.headerLinks {
+		display: flex;
+		gap: 20px;
+		a {
+			font-size: 20px;
+			color: navy;
+		}
+	}
 }

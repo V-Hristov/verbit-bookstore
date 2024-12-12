@@ -1,14 +1,14 @@
 {
-  "email": "Email:",
-  "dateOfBirth": "Date of Birth:",
-  "editProfile": "Edit Profile",
-  "saveProfile": "Save Profile",
-  "verbitFooter": "Verbit Bookstore",
-  "authorName": "Author Name",
-  "price": "Price",
-  "stock": "Stock",
-  "loadingLabel": "Loading...",
-  "addToCartButton": "Add To Cart",
-  "submitButton": "Submit",
-  "success": "Success!"
+	"email": "Email:",
+	"dateOfBirth": "Date of Birth:",
+	"editProfile": "Edit Profile",
+	"saveProfile": "Save Profile",
+	"verbitFooter": "Verbit Bookstore",
+	"authorName": "Author Name",
+	"price": "Price",
+	"stock": "Stock",
+	"loadingLabel": "Loading...",
+	"addToCartButton": "Add To Cart",
+	"submitButton": "Submit",
+	"success": "Success!"
 }
